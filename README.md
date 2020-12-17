@@ -1,6 +1,5 @@
 # Приложение по выводу погоды по запросу юзера
 
-https://github.com/<OWNER>/<REPOSITORY>/workflows/<WORKFLOW_NAME>/badge.svg
 ![PR Sanity Check](https://github.com/RomanMenderov/js-myweather/workflows/PR%20Sanity%20Check/badge.svg)
 ![Add codesandbox link](https://github.com/RomanMenderov/js-myweather/workflows/Add%20codesandbox%20link/badge.svg)
 

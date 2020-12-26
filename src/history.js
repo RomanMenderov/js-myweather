@@ -11,7 +11,7 @@ export function getUserHistory() {
   return [];
 }
 
-export async function setUserHistory(array) {
+export function setUserHistory(array) {
   return localStorage.setItem(userHistoryLocalName, JSON.stringify(array));
 }
 

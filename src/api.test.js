@@ -1,10 +1,10 @@
 /* eslint-disable no-proto */
-import { getMapCityUrl } from "./api";
+import { getUserCity, getMapCityUrl, getWeatherCity } from "./api";
 
 describe("test 1st task", () => {
   beforeEach(() => {
     //  jest.spyOn(console, "log");
-    // fetch.mockClear();
+    fetch.resetMocks();
   });
 
   afterEach(() => {
@@ -16,5 +16,22 @@ describe("test 1st task", () => {
     expect(getMapCityUrl(myCoord)).toEqual(
       expect.stringContaining(`${myCoord.lon},${myCoord.lat}`)
     );
+  });
+
+  test("it should return cityname", () => {
+    fetch.mockResponseOnce(JSON.stringify({ city: "Москва" }));
+
+    getUserCity().then((res) => {
+      expect(res).toEqual("Москва");
+    });
+  });
+
+  test("it should return json", () => {
+    const returnedObject = { city: "Москва" };
+    fetch.mockResponseOnce(JSON.stringify(returnedObject));
+
+    getWeatherCity("Москва").then((res) => {
+      expect(JSON.stringify(res)).toEqual(JSON.stringify(returnedObject));
+    });
   });
 });

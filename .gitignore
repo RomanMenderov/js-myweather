@@ -3,3 +3,4 @@ dist/
 .eslintcache
 4
 .gitignore
+coverage/

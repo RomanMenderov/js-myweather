@@ -3,7 +3,6 @@ import { getUserCity, getMapCityUrl, getWeatherCity } from "./api";
 
 describe("test 1st task", () => {
   beforeEach(() => {
-    //  jest.spyOn(console, "log");
     fetch.resetMocks();
   });
 

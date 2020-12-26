@@ -2,17 +2,14 @@
 import {
   addWeatherForm,
   showMyMapResults,
-  //  getUserCity,
   showUserHistory,
   showWetherResults,
-  //  getWeatherFromCityElement,
 } from "./core";
 
 describe("test 1st task", () => {
   let el;
 
   beforeEach(() => {
-    //  jest.spyOn(console, "log");
     el = document.createElement("div");
   });
 
@@ -31,16 +28,7 @@ describe("test 1st task", () => {
 
     expect(el.querySelectorAll("#cityList > li")[0].innerText).toBe("123");
   });
-  /* test("it should check if we get users city", () => {
-      global.fetch = jest.fn(() =>
-    Promise.resolve({
-      json: () => Promise.resolve({ city: "Moscow" }),
-    })
-  );
-      //fetch.mockImplementationOnce(() => Promise.resolve({ city: "Moscow" }));
-      let city = getUserCity();
-      expect(city).toBe("Moscow");
-    }); */
+
   test("it should check if wether is on site", () => {
     addWeatherForm(el);
     const temp = Math.random();

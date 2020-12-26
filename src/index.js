@@ -4,7 +4,7 @@ import { getUserHistory, userHistory } from "./history";
 
 import { addWeatherForm, showUserHistory, showMyWeather } from "./core";
 
-addWeatherForm(document.getElementsByTagName("body")[0]);
+addWeatherForm(document.querySelector("body"));
 getUserHistory().forEach((arrElement) => {
   userHistory.push(arrElement);
 });

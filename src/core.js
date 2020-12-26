@@ -21,14 +21,6 @@ export function showUserHistory(
   return array.forEach((element) => {
     const domElem = document.createElement("li");
     domElem.innerText = element;
-    domElem.addEventListener("click", async () => {
-      const question = domElem.innerText;
-      const myWeather = await getWeatherCity(question);
-      if (myWeather) {
-        showWetherResults(question, myWeather);
-        showMyMapResults(getMapCityUrl(myWeather.coord));
-      }
-    });
     historyElement.appendChild(domElem);
   });
 }
@@ -103,6 +95,18 @@ export function addWeatherForm(el) {
   const cityList = document.createElement("ul");
   cityList.id = "cityList";
   el.appendChild(cityList);
+
+  cityList.addEventListener("click", async (event) => {
+    const element = event.target.closest("li");
+    if (element) {
+      const question = element.innerText;
+      const myWeather = await getWeatherCity(question);
+      if (myWeather) {
+        showWetherResults(question, myWeather);
+        showMyMapResults(getMapCityUrl(myWeather.coord));
+      }
+    }
+  });
 
   button.addEventListener("click", async () => {
     const question = input.value;

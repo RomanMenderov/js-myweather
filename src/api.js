@@ -30,14 +30,18 @@ export function getMapCityUrl(coordinates) {
 }
 
 export async function getWeatherCity(cityName) {
-  const apiUrl = `https://api.openweathermap.org/data/2.5/weather
+  try {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather
 ?q=${cityName}&units=metric&appid=${apiKey}`;
-  const response = await fetch(apiUrl);
-  if (response.ok) {
-    const result = await response.json();
-    return result;
+    const response = await fetch(apiUrl);
+    if (response.ok) {
+      const result = await response.json();
+      return result;
+    }
+    return false;
+  } catch (err) {
+    return null;
   }
-  return false;
 }
 
 /** working with API end */

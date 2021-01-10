@@ -13,10 +13,6 @@ describe("test 1st task", () => {
     el = document.createElement("div");
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   test("it should create basic markup", () => {
     addWeatherForm(el);
     expect(el.querySelector("input")).not.toBe(null);

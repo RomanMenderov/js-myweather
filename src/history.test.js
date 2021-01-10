@@ -15,10 +15,6 @@ describe("test 1st task", () => {
     userHistory = [];
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   test("it should check user history", () => {
     jest.spyOn(window.localStorage.__proto__, "getItem");
     window.localStorage.__proto__.setItem = jest.fn();

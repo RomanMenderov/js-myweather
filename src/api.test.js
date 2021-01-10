@@ -6,10 +6,6 @@ describe("test 1st task", () => {
     fetch.resetMocks();
   });
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
   test("it should create map url", () => {
     const myCoord = { lon: Math.random(), lat: Math.random() };
     expect(getMapCityUrl(myCoord)).toEqual(

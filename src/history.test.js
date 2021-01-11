@@ -10,6 +10,8 @@ import {
 describe("test 1st task", () => {
   const userHistoryLocalName = "userCityHistory";
   let userHistory;
+  const setItemProto = window.localStorage.__proto__.setItem;
+  const getItemProto = window.localStorage.__proto__.getItem;
 
   beforeEach(() => {
     userHistory = [];
@@ -17,9 +19,10 @@ describe("test 1st task", () => {
 
   test("it should check user history", () => {
     jest.spyOn(window.localStorage.__proto__, "getItem");
-    window.localStorage.__proto__.setItem = jest.fn();
+    window.localStorage.__proto__.getItem = jest.fn();
     getUserHistory();
     expect(localStorage.getItem).toHaveBeenCalledWith(userHistoryLocalName);
+    window.localStorage.__proto__.getItem = getItemProto;
   });
 
   test("it should save new data in localstoradge", () => {
@@ -30,6 +33,7 @@ describe("test 1st task", () => {
       userHistoryLocalName,
       '["Minsk","Moskow"]'
     );
+    window.localStorage.__proto__.setItem = setItemProto;
   });
 
   test("it should check if city is unique ", () => {
@@ -56,5 +60,6 @@ describe("test 1st task", () => {
       userHistoryLocalName,
       '["Vilnus","Moscow","Piter"]'
     );
+    window.localStorage.__proto__.setItem = setItemProto;
   });
 });

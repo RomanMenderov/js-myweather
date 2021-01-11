@@ -2,22 +2,27 @@ const userHistoryLocalName = "userCityHistory";
 const historyLength = 10;
 export const userHistory = [];
 
-/** working with localStorage start */
-export function getUserHistory() {
-  const result = localStorage.getItem(userHistoryLocalName);
+const asyncLocalStorage = {
+  async setItem(key, value) {
+    return localStorage.setItem(key, value);
+  },
+  async getItem(key) {
+    return localStorage.getItem(key);
+  },
+};
+
+export async function getUserHistory() {
+  const result = await asyncLocalStorage.getItem(userHistoryLocalName);
   if (result) {
     return JSON.parse(result);
   }
   return [];
 }
 
-export function setUserHistory(array) {
-  return localStorage.setItem(userHistoryLocalName, JSON.stringify(array));
+export async function setUserHistory(array) {
+  await asyncLocalStorage.setItem(userHistoryLocalName, JSON.stringify(array));
 }
 
-/** working with localStorage end */
-
-/** working with userHistoryArr start */
 export function isUsersQuestionNotUnique(question, array = userHistory) {
   return array.some((el) => question.toLowerCase() === el.toLowerCase());
 }
@@ -38,5 +43,3 @@ export function saveCityToHistory(question, array = userHistory) {
   }
   return setUserHistory(array);
 }
-
-/** working with userHistoryArr end */

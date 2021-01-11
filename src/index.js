@@ -3,8 +3,12 @@ import { getUserHistory, userHistory } from "./history";
 import { addWeatherForm, showUserHistory, showMyWeather } from "./core";
 
 addWeatherForm(document.querySelector("body"));
-getUserHistory().forEach((arrElement) => {
-  userHistory.push(arrElement);
-});
-showUserHistory(userHistory);
+(async function showHistory() {
+  const history = await getUserHistory();
+  history.forEach((arrElement) => {
+    userHistory.push(arrElement);
+  });
+
+  showUserHistory(userHistory);
+})();
 showMyWeather();

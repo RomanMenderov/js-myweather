@@ -25,6 +25,15 @@ describe("test 1st task", () => {
     expect(el.querySelectorAll("#cityList > li")[0].innerText).toBe("123");
   });
 
+  test("it should check if 1st li elem has click action", () => {
+    addWeatherForm(el);
+    showUserHistory(["123", "321"], el.querySelector("#cityList"));
+    fetch.enableMocks();
+    el.querySelector("#cityList > li").click();
+
+    expect(fetch.mock.calls.length).toEqual(1);
+  });
+
   test("it should check if wether is on site", () => {
     addWeatherForm(el);
     const temp = Math.random();

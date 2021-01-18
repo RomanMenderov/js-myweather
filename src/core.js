@@ -97,7 +97,7 @@ export function addWeatherForm(el) {
   el.appendChild(cityList);
 
   cityList.addEventListener("click", async (event) => {
-    const element = event.target.closest("li");
+    const element = event.target;
     if (element) {
       const question = element.innerText;
       const myWeather = await getWeatherCity(question);

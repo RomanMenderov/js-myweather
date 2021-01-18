@@ -2,8 +2,12 @@
 import { getUserCity, getMapCityUrl, getWeatherCity } from "./api";
 
 describe("test 1st task", () => {
+  const textValue = Math.random().toString();
+  const returnedObject = { city: textValue };
+
   beforeEach(() => {
     fetch.resetMocks();
+    fetch.mockResponseOnce(JSON.stringify(returnedObject));
   });
 
   test("it should create map url", () => {
@@ -14,18 +18,13 @@ describe("test 1st task", () => {
   });
 
   test("it should return cityname", () => {
-    fetch.mockResponseOnce(JSON.stringify({ city: "Москва" }));
-
     getUserCity().then((res) => {
-      expect(res).toEqual("Москва");
+      expect(res).toEqual(textValue);
     });
   });
 
   test("it should return json", () => {
-    const returnedObject = { city: "Москва" };
-    fetch.mockResponseOnce(JSON.stringify(returnedObject));
-
-    getWeatherCity("Москва").then((res) => {
+    getWeatherCity(textValue).then((res) => {
       expect(JSON.stringify(res)).toEqual(JSON.stringify(returnedObject));
     });
   });

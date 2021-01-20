@@ -15,7 +15,7 @@ export async function showMyWeather() {
 
 export function showUserHistory(
   array,
-  historyElement = document.getElementById("cityList")
+  historyElement = document.querySelector(".cityList")
 ) {
   historyElement.innerHTML = "";
   return array.forEach((element) => {
@@ -28,8 +28,8 @@ export function showUserHistory(
 export function showWetherResults(
   cityName,
   weatherObj,
-  weatherElement = document.getElementById("weatherCurrentParams"),
-  cityElement = document.getElementById("weatherCurrentCity")
+  weatherElement = document.querySelector(".weatherCurrentParams"),
+  cityElement = document.querySelector(".weatherCurrentCity")
 ) {
   if (typeof weatherObj === "string") {
     cityElement.innerHTML = `${cityName}`;
@@ -46,7 +46,7 @@ ${weatherObj.weather[0].icon}.png`;
 
 export function showMyMapResults(
   myUrl,
-  mapElement = document.getElementById("weatherMap")
+  mapElement = document.querySelector(".weatherMap")
 ) {
   if (myUrl) {
     mapElement.src = myUrl;
@@ -63,29 +63,29 @@ export async function getWeatherFromCityElement(element) {
 
 export function addWeatherForm(el) {
   const weatherBlock = document.createElement("div");
-  weatherBlock.id = "weatherDescription";
+  weatherBlock.classList.add("weatherDescription");
 
   const weatherCurrentCity = document.createElement("span");
-  weatherCurrentCity.id = "weatherCurrentCity";
+  weatherCurrentCity.classList.add("weatherCurrentCity");
   weatherBlock.appendChild(weatherCurrentCity);
 
   const weatherCurrentParams = document.createElement("p");
-  weatherCurrentParams.id = "weatherCurrentParams";
+  weatherCurrentParams.classList.add("weatherCurrentParams");
   weatherBlock.appendChild(weatherCurrentParams);
 
   el.appendChild(weatherBlock);
 
   const input = document.createElement("input");
-  input.id = "input";
+  input.classList.add("input");
   el.appendChild(input);
 
   const button = document.createElement("button");
-  button.id = "button";
+  button.classList.add("button");
   button.innerText = "Проверить погоду";
   el.appendChild(button);
 
   const weatherMap = document.createElement("img");
-  weatherMap.id = "weatherMap";
+  weatherMap.classList.add("weatherMap");
   weatherMap.src = "";
   weatherMap.width = "400";
   weatherMap.height = "400";
@@ -93,7 +93,7 @@ export function addWeatherForm(el) {
   el.appendChild(weatherMap);
 
   const cityList = document.createElement("ul");
-  cityList.id = "cityList";
+  cityList.classList.add("cityList");
   el.appendChild(cityList);
 
   cityList.addEventListener("click", async (event) => {

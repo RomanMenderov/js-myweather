@@ -20,16 +20,16 @@ describe("test 1st task", () => {
 
   test("it should check if we show users history", () => {
     addWeatherForm(el);
-    showUserHistory(["123", "321"], el.querySelector("#cityList"));
+    showUserHistory(["123", "321"], el.querySelector(".cityList"));
 
-    expect(el.querySelectorAll("#cityList > li")[0].innerText).toBe("123");
+    expect(el.querySelectorAll(".cityList > li")[0].innerText).toBe("123");
   });
 
   test("it should check if 1st li elem has click action", () => {
     addWeatherForm(el);
-    showUserHistory(["123", "321"], el.querySelector("#cityList"));
+    showUserHistory(["123", "321"], el.querySelector(".cityList"));
     fetch.enableMocks();
-    el.querySelector("#cityList > li").click();
+    el.querySelector(".cityList > li").click();
 
     expect(fetch.mock.calls.length).toEqual(1);
   });
@@ -46,30 +46,30 @@ describe("test 1st task", () => {
         ],
         main: { temp },
       },
-      el.querySelector("#weatherCurrentParams"),
-      el.querySelector("#weatherCurrentCity")
+      el.querySelector(".weatherCurrentParams"),
+      el.querySelector(".weatherCurrentCity")
     );
 
-    expect(el.querySelector("#weatherCurrentParams").innerText).toBe(
+    expect(el.querySelector(".weatherCurrentParams").innerText).toBe(
       `Температура: ${temp}`
     );
-    expect(el.querySelector("#weatherCurrentCity").innerHTML).toBeTruthy();
+    expect(el.querySelector(".weatherCurrentCity").innerHTML).toBeTruthy();
 
     showWetherResults(
       "My city",
       "не найдено",
-      el.querySelector("#weatherCurrentParams"),
-      el.querySelector("#weatherCurrentCity")
+      el.querySelector(".weatherCurrentParams"),
+      el.querySelector(".weatherCurrentCity")
     );
-    expect(el.querySelector("#weatherCurrentParams").innerText).toBe(
+    expect(el.querySelector(".weatherCurrentParams").innerText).toBe(
       `не найдено`
     );
-    expect(el.querySelector("#weatherCurrentCity").innerHTML).toBe(`My city`);
+    expect(el.querySelector(".weatherCurrentCity").innerHTML).toBe(`My city`);
   });
 
   test("it should check if map is on site", () => {
     addWeatherForm(el);
-    const mapElement = el.querySelector("#weatherMap");
+    const mapElement = el.querySelector(".weatherMap");
     showMyMapResults("http://", mapElement);
 
     expect(mapElement.src).toBe(`http://`);

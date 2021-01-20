@@ -31,7 +31,7 @@ describe("test 1st task", () => {
     fetch.enableMocks();
     el.querySelector(".cityList > li").click();
 
-    expect(fetch.mock.calls.length).toEqual(1);
+    expect(fetch).toBeCalledTimes(1);
   });
 
   test("it should check if wether is on site", () => {

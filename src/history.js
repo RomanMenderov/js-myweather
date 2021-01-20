@@ -20,7 +20,7 @@ export async function getUserHistory() {
 }
 
 export async function setUserHistory(array) {
-  await asyncLocalStorage.setItem(userHistoryLocalName, JSON.stringify(array));
+  asyncLocalStorage.setItem(userHistoryLocalName, JSON.stringify(array));
 }
 
 export function isUsersQuestionNotUnique(question, array = userHistory) {

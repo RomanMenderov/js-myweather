@@ -1,4 +1,3 @@
-/* eslint-disable no-proto */
 import { getUserCity, getMapCityUrl, getWeatherCity } from "./api";
 
 describe("test 1st task", () => {

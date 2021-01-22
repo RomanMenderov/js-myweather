@@ -1,17 +1,7 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-use-before-define */
 
 import { saveCityToHistory, userHistory } from "./history";
 import { getUserCity, getWeatherCity, getMapCityUrl } from "./api";
-
-export async function showMyWeather() {
-  const userCity = await getUserCity();
-  const myWeather = await getWeatherCity(userCity);
-  return (
-    showWetherResults(userCity, myWeather),
-    showMyMapResults(getMapCityUrl(myWeather.coord))
-  );
-}
 
 export function showUserHistory(
   array,
@@ -53,6 +43,15 @@ export function showMyMapResults(
     mapElement.style.display = "block";
   }
   return false;
+}
+
+export async function showMyWeather() {
+  const userCity = await getUserCity();
+  const myWeather = await getWeatherCity(userCity);
+  return (
+    showWetherResults(userCity, myWeather),
+    showMyMapResults(getMapCityUrl(myWeather.coord))
+  );
 }
 
 export async function getWeatherFromCityElement(element) {

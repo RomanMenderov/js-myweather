@@ -1,4 +1,3 @@
-/* eslint-disable no-proto */
 import {
   addWeatherForm,
   showMyMapResults,

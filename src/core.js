@@ -8,10 +8,10 @@ export function showUserHistory(
   historyElement = document.querySelector(".cityList")
 ) {
   historyElement.innerHTML = "";
-  return array.forEach((element) => {
-    const domElem = document.createElement("li");
-    domElem.innerText = element;
-    historyElement.appendChild(domElem);
+  array.forEach((element) => {
+    const liEl = document.createElement("li");
+    liEl.innerText = element;
+    historyElement.appendChild(liEl);
   });
 }
 
@@ -42,7 +42,6 @@ export function showMyMapResults(
     mapElement.src = myUrl;
     mapElement.style.display = "block";
   }
-  return false;
 }
 
 export async function showMyWeather() {

@@ -1,4 +1,3 @@
-/* eslint-disable no-proto */
 import {
   getUserHistory,
   setUserHistory,
@@ -10,15 +9,10 @@ import {
 describe("test 1st task", () => {
   const userHistoryLocalName = "userCityHistory";
   let userHistory;
-  const setItemProto = window.localStorage.__proto__.setItem;
-  const getItemProto = window.localStorage.__proto__.getItem;
 
   beforeAll(() => {
-    jest.spyOn(window.localStorage.__proto__, "getItem");
-    window.localStorage.__proto__.getItem = jest.fn();
-
-    jest.spyOn(window.localStorage.__proto__, "setItem");
-    window.localStorage.__proto__.setItem = jest.fn();
+    jest.spyOn(Storage.prototype, "setItem");
+    jest.spyOn(Storage.prototype, "getItem");
   });
 
   beforeEach(() => {
@@ -26,8 +20,8 @@ describe("test 1st task", () => {
   });
 
   afterAll(() => {
-    window.localStorage.__proto__.getItem = getItemProto;
-    window.localStorage.__proto__.setItem = setItemProto;
+    localStorage.setItem.mockRestore();
+    localStorage.getItem.mockRestore();
   });
 
   test("it should check user history", () => {

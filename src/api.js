@@ -1,8 +1,9 @@
-/** working with API start */
+/* eslint-disable consistent-return */
 const USER_CITY_API_URL = "https://get.geojs.io/v1/ip/geo.json";
 const MAP_CITY_URL = "https://static-maps.yandex.ru/1.x/?l=map";
-const WEATHER_CITY_API_URL = "https://api.openweathermap.org/data/2.5/weather";
-const WEATHER_CITY_API_KEY = "fa5292c9164722fbd4dd9fb5132d9ea9";
+export const WEATHER_CITY_API_URL =
+  "https://api.openweathermap.org/data/2.5/weather";
+export const WEATHER_CITY_API_KEY = "fa5292c9164722fbd4dd9fb5132d9ea9";
 
 export async function getUserCity() {
   try {
@@ -11,9 +12,8 @@ export async function getUserCity() {
       const result = await response.json();
       return result.city;
     }
-    return false;
   } catch (err) {
-    return null;
+    return "ваше положение не определено";
   }
 }
 
@@ -30,16 +30,15 @@ export function getMapCityUrl(coordinates) {
 
 export async function getWeatherCity(cityName) {
   try {
-    const apiUrl = `${WEATHER_CITY_API_URL}?q=${cityName}&units=metric
-&appid=${WEATHER_CITY_API_KEY}`;
+    const apiUrl = `${WEATHER_CITY_API_URL}?q=${cityName}
+&units=metric&appid=${WEATHER_CITY_API_KEY}`;
     const response = await fetch(apiUrl);
     if (response.ok) {
       const result = await response.json();
       return result;
     }
-    return false;
   } catch (err) {
-    return null;
+    return "данных о погоде нет";
   }
 }
 

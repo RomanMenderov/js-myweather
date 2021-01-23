@@ -99,7 +99,7 @@ export function addWeatherForm(el) {
     if (element) {
       const question = element.innerText;
       const myWeather = await getWeatherCity(question);
-      if (myWeather) {
+      if (myWeather !== "данных о погоде нет") {
         showWetherResults(question, myWeather);
         showMyMapResults(getMapCityUrl(myWeather.coord));
       }
@@ -110,7 +110,7 @@ export function addWeatherForm(el) {
     const question = input.value;
     input.value = "";
     const myWeather = await getWeatherCity(question);
-    if (myWeather) {
+    if (myWeather !== "данных о погоде нет") {
       showWetherResults(
         question,
         myWeather,
